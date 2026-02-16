@@ -119,13 +119,13 @@
     <audio id="bgm" src="nhaccuatoi.mp3" preload="auto" playsinline></audio>
 
     <div id="ui">
-        <button id="startBtn">Mở lì xì đi 💖</button>
+        <button id="startBtn">Mở đi 💖</button>
         <div id="message">Năm sau
              <br/>cùng ngắm pháo hoa
             <br/> nha Bà❤️</div>
         <div id="sub-message">😊</div>
     </div>
-    <div id="stats">✨ iPhone optimized ✨</div>
+   
 
     <canvas id="canvas"></canvas>
 
@@ -450,32 +450,32 @@
                 let numberOfShells = 1;
 
                 if (elapsed > 7000) availableTypes.push('star');
-                if (elapsed > 12000) availableTypes.push('heart');
-                if (elapsed > 18000) availableTypes.push('spiral');
-                if (elapsed > 24000) availableTypes.push('flower', 'butterfly');
-                if (elapsed > 30000) availableTypes.push('crown', 'rainbow');
-                if (elapsed > 35000) availableTypes.push('willow');
-                if (elapsed > 40000) availableTypes.push('ten');
+                if (elapsed > 10000) availableTypes.push('heart');
+                if (elapsed > 16000) availableTypes.push('spiral');
+                if (elapsed > 22000) availableTypes.push('flower', 'butterfly');
+                if (elapsed > 28000) availableTypes.push('crown', 'rainbow');
+                if (elapsed > 32000) availableTypes.push('willow');
+                if (elapsed > 38000) availableTypes.push('ten');
 
                 // Tăng dần tốc độ
-                if (elapsed > 20000) launchInterval = 750;
-                if (elapsed > 30000) launchInterval = 600;
-                if (elapsed > 40000) launchInterval = 450;
+                if (elapsed > 15000) launchInterval = 750;
+                if (elapsed > 25000) launchInterval = 600;
+                if (elapsed > 35000) launchInterval = 450;
 
                 // Grand finale từ 45s - 55s: bùng nổ đa dạng
-                if (elapsed > 45000 && elapsed < 55000) {
+                if (elapsed > 42000 && elapsed < 51000) {
                     launchInterval = 280;
                     numberOfShells = 2;
                     availableTypes = ['heart', 'star', 'ring', 'spiral', 'butterfly', 'flower', 'crown', 'rainbow', 'willow', 'ten'];
                 }
 
                 // Dừng bắn sau 55s
-                if (elapsed > 55000) {
+                if (elapsed > 52000) {
                     launchInterval = 999999;
                 }
 
                 // Bắn pháo
-                if (shells.length < 10 && elapsed < 55000 && timestamp - lastLaunch > launchInterval) {
+                if (shells.length < 10 && elapsed < 52000 && timestamp - lastLaunch > launchInterval) {
                     for(let i = 0; i < numberOfShells; i++) {
                         const startX = cw/2 + (Math.random()-0.5)*cw*0.7;
                         const targetX = startX + (Math.random()-0.5)*250;
@@ -500,11 +500,11 @@
                 }
 
                 // --- HIỆN CHỮ ---
-                if (elapsed > 55000 && !messageShown) {
+                if (elapsed > 52000 && !messageShown) {
                     document.getElementById('message').style.display = 'block';
                     messageShown = true;
                 }
-                if (elapsed > 57500 && !subMessageShown) {
+                if (elapsed > 52500 && !subMessageShown) {
                     document.getElementById('sub-message').style.display = 'block';
                     subMessageShown = true;
                 }
@@ -542,4 +542,5 @@
         })();
     </script>
 </body>
+
 </html>
